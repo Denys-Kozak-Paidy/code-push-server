@@ -180,6 +180,13 @@ export function getAcquisitionRouter(config: AcquisitionConfig): express.Router 
             updateInfo: giveRolloutPackage ? cachedResponseObject.rolloutPackage : cachedResponseObject.originalPackage,
           };
 
+          if (process.env.EMULATED) {
+            updateCheckBody.updateInfo.downloadURL = updateCheckBody.updateInfo.downloadURL.replace(
+              "http://127.0.0.1:10000",
+              `http://${process.env.BLOB_HOST}`
+            );
+          }
+
           // Change in new API
           updateCheckBody.updateInfo.target_binary_range = updateCheckBody.updateInfo.appVersion;
 
