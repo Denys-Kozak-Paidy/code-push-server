@@ -181,6 +181,7 @@ export function getAcquisitionRouter(config: AcquisitionConfig): express.Router 
           };
 
           if (process.env.EMULATED) {
+            console.log("DEBUG BEFORE BLOB_HOST: ",updateCheckBody.updateInfo.downloadURL);
             updateCheckBody.updateInfo.downloadURL = updateCheckBody.updateInfo.downloadURL.replace(
               "http://127.0.0.1:10000",
               `${process.env.BLOB_HOST}`
