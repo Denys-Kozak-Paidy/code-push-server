@@ -185,6 +185,7 @@ export function getAcquisitionRouter(config: AcquisitionConfig): express.Router 
               "http://127.0.0.1:10000",
               `${process.env.BLOB_HOST}`
             );
+            console.log("DEBUG BLOB_HOST: ",updateCheckBody.updateInfo);
           }
 
           // Change in new API
