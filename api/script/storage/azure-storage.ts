@@ -861,7 +861,7 @@ export class AzureStorage implements storage.Storage {
 
       tableServiceClient = TableServiceClient.fromConnectionString(devConnectionString, {allowInsecureConnection : true});
       tableClient = TableClient.fromConnectionString(devConnectionString, AzureStorage.TABLE_NAME, {allowInsecureConnection : true});
-      blobServiceClient = BlobServiceClient.fromConnectionString(devConnectionString. {allowInsecureConnection : true});
+      blobServiceClient = BlobServiceClient.fromConnectionString(devConnectionString, {allowInsecureConnection : true});
     } else {
       if ((!accountName && !process.env.AZURE_STORAGE_ACCOUNT) || (!accountKey && !process.env.AZURE_STORAGE_ACCESS_KEY)) {
         throw new Error("Azure credentials not set");
