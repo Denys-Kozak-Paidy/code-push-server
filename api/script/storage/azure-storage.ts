@@ -857,11 +857,11 @@ export class AzureStorage implements storage.Storage {
 
     if (process.env.EMULATED) {
       const devConnectionString: string = process.env.AZURITE_CONNECTION_STRING?.trim() || "UseDevelopmentStorage=true";
-      console.log("Dev Connection String:", devConnectionString);
+      console.log("[DEBUG] Dev Connection String:", devConnectionString);
 
-      tableServiceClient = TableServiceClient.fromConnectionString(devConnectionString);
-      tableClient = TableClient.fromConnectionString(devConnectionString, AzureStorage.TABLE_NAME);
-      blobServiceClient = BlobServiceClient.fromConnectionString(devConnectionString);
+      tableServiceClient = TableServiceClient.fromConnectionString(devConnectionString, {allowInsecureConnection : true});
+      tableClient = TableClient.fromConnectionString(devConnectionString, AzureStorage.TABLE_NAME, {allowInsecureConnection : true});
+      blobServiceClient = BlobServiceClient.fromConnectionString(devConnectionString. {allowInsecureConnection : true});
     } else {
       if ((!accountName && !process.env.AZURE_STORAGE_ACCOUNT) || (!accountKey && !process.env.AZURE_STORAGE_ACCESS_KEY)) {
         throw new Error("Azure credentials not set");
